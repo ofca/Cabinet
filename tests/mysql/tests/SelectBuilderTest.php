@@ -685,4 +685,15 @@ class SelectBuilderTest extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals($expected, $query);
 	}
+
+    public function testBuildSelectWithTableAlias()
+    {
+        $expected = "SELECT * FROM `my_table` AS `mt`";
+
+        $query = $this->connection
+            ->select()->from(array('my_table', 'mt'))
+            ->compile();
+
+        $this->assertEquals($expected, $query);
+    }
 }
