@@ -333,7 +333,7 @@ abstract class Sql extends Compiler
 
 			if ($fk['constraint'])
 			{
-				$part[] = 'CONTSTRAINT '.$this->quoteIdentifier($fk['constraint']);
+				$part[] = 'CONSTRAINT '.$this->quoteIdentifier($fk['constraint']);
 			}
 
 			$part[] = 'FOREIGN KEY ('.$this->quoteIdentifier($fk['key']).')';

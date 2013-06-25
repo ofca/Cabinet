@@ -58,7 +58,7 @@ class TableBuilderTest extends PHPUnit_Framework_TestCase
 
     public function testCreateTableWithForeignKeys()
     {
-        $expected = 'CREATE TABLE IF NOT EXISTS `users` ( `id` INT(11) NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) NOT NULL, `group_id` INT(11) NOT NULL, PRIMARY KEY `id` (`id`), CONTSTRAINT `FK_users_groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE )  ENGINE = InnoDB CHARACTER SET utf8';
+        $expected = 'CREATE TABLE IF NOT EXISTS `users` ( `id` INT(11) NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) NOT NULL, `group_id` INT(11) NOT NULL, PRIMARY KEY `id` (`id`), CONSTRAINT `FK_users_groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE )  ENGINE = InnoDB CHARACTER SET utf8';
 
         $query = $this->connection
             ->schema()
