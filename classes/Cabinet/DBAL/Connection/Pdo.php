@@ -340,10 +340,10 @@ class Pdo extends Connection
 		catch (\PDOException $e)
 		{
 			$code = is_int($e->getCode()) ? $e->getCode() : 0;
-			throw new Exception($e->getMessage().' from QUERY: '.$sql, $code);
+			throw new \Exception($e->getMessage().' from QUERY: '.$sql, $code);
 		}
 
-		if($type === Db::SELECT)
+		if ($type === Db::SELECT)
 		{
 			$asObject = $query->getAsObject();
 			$asObject === null and $asObject = $this->config['asObject'];
@@ -372,6 +372,8 @@ class Pdo extends Connection
 			{
 				$result = $result->fetchAll(\PDO::FETCH_CLASS, 'stdClass');
 			}
+
+            $result = new Result($result, $sql, $asObject);
 		}
 		elseif($type === Db::INSERT)
 		{
